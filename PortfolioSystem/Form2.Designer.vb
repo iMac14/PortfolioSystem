@@ -23,7 +23,7 @@ Partial Class Form2
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         BtnPayrol = New Button()
-        Button2 = New Button()
+        BtnEmp = New Button()
         Button3 = New Button()
         Button4 = New Button()
         Label1 = New Label()
@@ -38,14 +38,14 @@ Partial Class Form2
         BtnPayrol.Text = "Payrol"
         BtnPayrol.UseVisualStyleBackColor = True
         ' 
-        ' Button2
+        ' BtnEmp
         ' 
-        Button2.Location = New Point(184, 59)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(75, 23)
-        Button2.TabIndex = 1
-        Button2.Text = "Button2"
-        Button2.UseVisualStyleBackColor = True
+        BtnEmp.Location = New Point(184, 59)
+        BtnEmp.Name = "BtnEmp"
+        BtnEmp.Size = New Size(103, 23)
+        BtnEmp.TabIndex = 1
+        BtnEmp.Text = "Employee List"
+        BtnEmp.UseVisualStyleBackColor = True
         ' 
         ' Button3
         ' 
@@ -78,11 +78,11 @@ Partial Class Form2
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(281, 178)
+        ClientSize = New Size(434, 178)
         Controls.Add(Label1)
         Controls.Add(Button4)
         Controls.Add(Button3)
-        Controls.Add(Button2)
+        Controls.Add(BtnEmp)
         Controls.Add(BtnPayrol)
         Name = "Form2"
         Text = "System List"
@@ -91,7 +91,7 @@ Partial Class Form2
     End Sub
 
     Friend WithEvents BtnPayrol As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents BtnEmp As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents Label1 As Label
