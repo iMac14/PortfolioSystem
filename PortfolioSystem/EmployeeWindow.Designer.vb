@@ -30,10 +30,10 @@ Partial Class EmployeeWindow
         txtFirstName = New TextBox()
         txtMiddleName = New TextBox()
         txtLastName = New TextBox()
-        txtEmployeeID = New TextBox()
-        Label4 = New Label()
         BtnUpdate = New Button()
         BtnDelete = New Button()
+        Label4 = New Label()
+        txtEmployeeID = New TextBox()
         txtUserID = New TextBox()
         Label5 = New Label()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
@@ -104,22 +104,6 @@ Partial Class EmployeeWindow
         txtLastName.Size = New Size(100, 23)
         txtLastName.TabIndex = 7
         ' 
-        ' txtEmployeeID
-        ' 
-        txtEmployeeID.Location = New Point(229, 70)
-        txtEmployeeID.Name = "txtEmployeeID"
-        txtEmployeeID.Size = New Size(100, 23)
-        txtEmployeeID.TabIndex = 9
-        ' 
-        ' Label4
-        ' 
-        Label4.AutoSize = True
-        Label4.Location = New Point(144, 73)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(73, 15)
-        Label4.TabIndex = 8
-        Label4.Text = "Employee ID"
-        ' 
         ' BtnUpdate
         ' 
         BtnUpdate.Location = New Point(474, 239)
@@ -137,6 +121,22 @@ Partial Class EmployeeWindow
         BtnDelete.TabIndex = 11
         BtnDelete.Text = "Delete"
         BtnDelete.UseVisualStyleBackColor = True
+        ' 
+        ' Label4
+        ' 
+        Label4.AutoSize = True
+        Label4.Location = New Point(144, 73)
+        Label4.Name = "Label4"
+        Label4.Size = New Size(73, 15)
+        Label4.TabIndex = 8
+        Label4.Text = "Employee ID"
+        ' 
+        ' txtEmployeeID
+        ' 
+        txtEmployeeID.Location = New Point(229, 70)
+        txtEmployeeID.Name = "txtEmployeeID"
+        txtEmployeeID.Size = New Size(100, 23)
+        txtEmployeeID.TabIndex = 9
         ' 
         ' txtUserID
         ' 
@@ -188,10 +188,10 @@ Partial Class EmployeeWindow
     Friend WithEvents txtFirstName As TextBox
     Friend WithEvents txtMiddleName As TextBox
     Friend WithEvents txtLastName As TextBox
-    Friend WithEvents txtEmployeeID As TextBox
-    Friend WithEvents Label4 As Label
     Friend WithEvents BtnUpdate As Button
     Friend WithEvents BtnDelete As Button
+    Friend WithEvents Label4 As Label
+    Friend WithEvents txtEmployeeID As TextBox
     Friend WithEvents txtUserID As TextBox
     Friend WithEvents Label5 As Label
 End Class

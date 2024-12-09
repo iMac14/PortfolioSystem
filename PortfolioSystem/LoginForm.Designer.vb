@@ -32,6 +32,7 @@ Partial Class Form1
         BtnLogin = New Button()
         BtnCancel = New Button()
         CheckBox1 = New CheckBox()
+        BtnRegister = New Button()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -85,6 +86,7 @@ Partial Class Form1
         Txtpw.BackColor = SystemColors.InactiveCaption
         Txtpw.Location = New Point(187, 87)
         Txtpw.Name = "Txtpw"
+        Txtpw.PasswordChar = "*"c
         Txtpw.Size = New Size(157, 23)
         Txtpw.TabIndex = 5
         ' 
@@ -118,11 +120,21 @@ Partial Class Form1
         CheckBox1.Text = "Show Password"
         CheckBox1.UseVisualStyleBackColor = True
         ' 
+        ' BtnRegister
+        ' 
+        BtnRegister.Location = New Point(26, 122)
+        BtnRegister.Name = "BtnRegister"
+        BtnRegister.Size = New Size(75, 23)
+        BtnRegister.TabIndex = 9
+        BtnRegister.Text = "Register"
+        BtnRegister.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(390, 217)
+        Controls.Add(BtnRegister)
         Controls.Add(CheckBox1)
         Controls.Add(BtnCancel)
         Controls.Add(BtnLogin)
@@ -148,5 +160,6 @@ Partial Class Form1
     Friend WithEvents BtnLogin As Button
     Friend WithEvents BtnCancel As Button
     Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents BtnRegister As Button
 
 End Class

@@ -5,52 +5,48 @@ Imports Microsoft.Data.SqlClient
 
 
 Public Class Form1
-
-    ' Corrected connection string (ensure to replace with actual database name)
-
+    Dim Command As SqlCommand
+    Dim reader As SqlDataReader
+    Dim con As SqlConnection ' Use consistent casing for variable names
     Private Sub btn1log_Click(sender As Object, e As EventArgs) Handles BtnLogin.Click
-        ' Validate login
-        Dim con As New SqlConnection("Data Source=DESKTOP-8U07U20;Initial Catalog=sampleDB;Integrated Security=True;Trust Server Certificate=True")
-        If ValidateUser(TxtUser.Text, Txtpw.Text) Then
-            MessageBox.Show("Login successful!")
-            ' Open main form or dashboard after successful login
-            Form2.Show()
-            Me.Hide() ' Hide the login form
-        Else
-            MessageBox.Show("Invalid username or password.")
-        End If
+
+        con = New SqlConnection("Data Source=DESKTOP-8U07U20;Initial Catalog=sampleDB;Integrated Security=True;TrustServerCertificate=True")
+        Dim reader As SqlDataReader
+
+        Try
+            con.Open()
+            Dim Query = "SELECT * FROM UserTable Where Username='" & TxtUser.Text & "' and Password='" & Txtpw.Text & "'"
+            Command = New SqlCommand(Query, con)
+            reader = Command.ExecuteReader
+            Dim count As Integer
+            count = 0
+            While reader.Read
+                count = count + 1
+            End While
+
+            If count = 1 Then
+                MessageBox.Show("Login Succesful")
+                Form2.Show()
+                Me.Hide()
+            ElseIf count > 1 Then
+                MessageBox.Show("Username and password are Duplicate")
+            Else
+                MessageBox.Show("Username and password are incorrect")
+
+            End If
+            con.Close()
+
+        Catch ex As Exception ' Corrected "Catch ex As Con" to "Catch ex As Exception"
+            MessageBox.Show(ex.Message)
+        Finally
+            If con IsNot Nothing Then
+                con.Dispose() ' Dispose releases resources, but Close() would be safer for connections
+            End If
+        End Try
 
     End Sub
 
-    Private Function ValidateUser(username As String, password As String) As Boolean
-        Dim isValid As Boolean = False
-        ' Using SQL connection and query to check if the username and password are correct
-        Dim con As New SqlConnection("Data Source=DESKTOP-8U07U20;Initial Catalog=sampleDB;Integrated Security=True;Trust Server Certificate=True")
-        ' SQL query to check if the username and password match any record in the database
-        Dim query As String = "SELECT COUNT(*) FROM UserTable WHERE Username = @Username AND Password = @Password"
 
-        Using command As New SqlCommand(query, con)
-            ' Add parameters to avoid SQL injection
-            command.Parameters.AddWithValue("@Username", username)
-            command.Parameters.AddWithValue("@Password", password)
-
-            Try
-                con.Open()
-                ' Execute the query and get the count of matching records
-                Dim result As Integer = Convert.ToInt32(command.ExecuteScalar())
-
-                ' If result is greater than 0, the login is successful
-                If result > 0 Then
-                    isValid = True
-                End If
-            Catch ex As Exception
-                MessageBox.Show("Error: " & ex.Message)
-            End Try
-        End Using
-
-
-        Return isValid
-    End Function
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -65,10 +61,22 @@ Public Class Form1
     End Sub
 
     Private Sub txtPassword_TextChanged(sender As Object, e As EventArgs) Handles Txtpw.TextChanged
-        Txtpw.PasswordChar = "*"c
+
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        If CheckBox1.Checked Then
+            Txtpw.PasswordChar = "" ' Show password
+        Else
+            Txtpw.PasswordChar = "*" ' Hide password with masking character
+        End If
+    End Sub
+
+    Private Sub BtnRegister_Click(sender As Object, e As EventArgs) Handles BtnRegister.Click
+        RegisterForm.Show()
+        Me.Hide()
+
+
 
     End Sub
 
